@@ -73,11 +73,7 @@ interface NASANeoResponse {
 // Output interface for transformed data
 export interface AsteroidData {
   name: string;
-  size: {
-    min_km: number;
-    max_km: number;
-    average_km: number;
-  };
+  average_size: number;
   closeness_to_earth_km: number;
   relative_velocity_kmh: number;
 }
@@ -103,11 +99,7 @@ export function parseNasaData(nasaResponse: NASANeoResponse): AsteroidData[] {
 
       asteroids.push({
         name: neo.name,
-        size: {
-          min_km: minSize,
-          max_km: maxSize,
-          average_km: avgSize,
-        },
+        average_size: avgSize,
         closeness_to_earth_km: parseFloat(closeApproach.miss_distance.kilometers),
         relative_velocity_kmh: parseFloat(closeApproach.relative_velocity.kilometers_per_hour),
       });

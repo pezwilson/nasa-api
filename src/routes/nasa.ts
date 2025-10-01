@@ -30,12 +30,7 @@ const nasaRoutes: FastifyPluginAsync = async (fastify) => {
 
       const asteroids = parseNasaData(nasaData);
 
-      return {
-        start_date,
-        end_date,
-        count: asteroids.length,
-        asteroids,
-      };
+      return { asteroids };
     }
   );
 };

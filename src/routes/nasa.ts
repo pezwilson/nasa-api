@@ -24,7 +24,7 @@ const nasaRoutes: FastifyPluginAsync = async (fastify) => {
 
       const NASA_API_KEY = process.env.NASA_API_KEY || 'DEMO_KEY';
       const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start_date}&end_date=${end_date}&api_key=${NASA_API_KEY}`;
-
+console.log(url)
       const response = await fetch(url);
       const nasaData = await response.json() as NASANeoResponse;
 

@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
 import nasaRoutes from './routes/nasa';
@@ -7,6 +9,11 @@ const app = Fastify({
   logger: {
     level: process.env.LOG_LEVEL || 'info',
   },
+});
+
+await app.register(cors, {
+  origin: 'http://localhost:5173', // Your frontend URL
+  credentials: true,
 });
 
 // Register Swagger
